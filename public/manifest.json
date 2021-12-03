@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "RedSync client",
+  "version": "1.0.0",
+  "description": "Firefox sync but for Chrome",
+  "author": "Iván Molina Rebolledo",
+  "permissions": ["bookmarks", "history", "storage",
+    "*://api.accounts.firefox.com/*",
+    "*://proyecto.ivmoreau.com/*",
+    "http://localhost:3000/*"],
+  "background": {
+    "scripts": ["build/background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "web_accessible_resources": [
+    "redsyncmodulelib_bg.wasm"
+  ],
+  "script-src": ["wasm-eval"],
+  "content_security_policy": "script-src 'self' 'wasm-eval'; object-src 'self'"
+}
